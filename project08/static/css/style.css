@@ -1,0 +1,9 @@
+h1,p
+{
+    background: linear-gradient(45deg,orange,aqua,red,lime);
+}
+img
+{
+    border-radius: 20%;
+    box-shadow: 20px 20px black ;
+}
