@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap01.css' %}">
+    <link rel="stylesheet" href="{% static 'css/mdb.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <h1>TOP - 3 BATSMAN's OF TEAM INDIA </h1>
+    <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="{% static 'images/rohit.jpg' %}" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="{% static 'images/virat.jpg' %}" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="{% static 'images/dhoni.jpg' %}" class="d-block w-100" alt="...">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-target="#carouselExampleFade" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-target="#carouselExampleFade" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </button>
+      </div>
+    
+
+
+
+
+    <link rel="stylesheet" href="{% static 'js/jquery.js' %}">
+    <link rel="stylesheet" href="{% static 'js/popper.js' %}">
+    <link rel="stylesheet" href="{% static 'js/bootstrap01.js' %}">
+    <link rel="stylesheet" href="{% static 'js/mdb.js' %}">
+</body>
+</html>
