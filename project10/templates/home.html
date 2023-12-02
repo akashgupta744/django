@@ -1,0 +1,79 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static 'fontawesomefree/css/all.min.css' %}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/mdb.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        /* Make the image fully responsive */
+
+        body
+        {
+          background-color:blac;
+        }
+        .carousel-inner img {
+          width: 300px;
+          height: 300px;
+        }
+        
+        #demo{
+            margin: auto;
+            margin-top: 50px;
+            height: 300px;
+            width:300px;
+        }
+        i{
+          color: red;
+        }
+      
+        </style>
+
+    <title>Document</title>
+   
+  </head>
+<body>
+    
+    <div id="demo" class="carousel slide" data-ride="carousel">
+
+        <!-- Indicators -->
+        <ul class="carousel-indicators">
+          <li data-target="#demo" data-slide-to="0" class="active"></li>
+          <li data-target="#demo" data-slide-to="1"></li>
+          <li data-target="#demo" data-slide-to="2"></li>
+        </ul>
+        
+        <!-- The slideshow -->
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="{% static 'images/kartik.jpg' %}" alt="Los Angeles" width="1100" height="500">
+          </div>
+          <div class="carousel-item">
+            <img src="{% static 'images/ayushmann.png' %}" alt="Chicago" width="1100" height="500">
+          </div>
+          <div class="carousel-item">
+            <img src="{% static 'images/varun.jpg' %}" alt="New York" width="1100" height="500">
+          </div>
+        </div>
+        
+        <!-- Left and right controls -->
+        <a class="carousel-control-prev" href="#demo" data-slide="prev">
+          <i class="fa-solid fa-less-than"></i>
+          <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#demo" data-slide="next">
+          <i class="fa-solid fa-greater-than"></i>
+          <span class="carousel-control-next-icon"></span>
+        </a>
+    </div>
+    
+    
+    <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/popper.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/mdb.min.js' %}"></script>
+</body>
+</html>
