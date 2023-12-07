@@ -9,8 +9,10 @@ class Webpage(models.Model):
     name=models.CharField(max_length=100)
     url=models.URLField()
 
+    def __str__(self):
+        return self.name
+
 class AccessRecord(models.Model):
     name=models.ForeignKey(Topic,on_delete=models.CASCADE),
     date=models.DateField(),
     author=models.CharField(max_length=100,primary_key=True),
-
