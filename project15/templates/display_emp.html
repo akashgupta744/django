@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>emp</title>
+</head>
+<body bgcolor="purple">
+    <center>
+        <table bgcolor="aqua" border="2px" cellpadding="10px" cellspacing="5px">
+                <tr>
+                    <th>empno</th>
+                    <th>ename</th>
+                    <th>mgr</th>
+                    <th>sal</th>
+                    <th>deptno</th>
+                    
+                </tr>
+                {% for eo in emp %}
+                <tr>
+                    <td>{{ eo.empno }}</td>
+                    <td>{{ eo.ename }}</td>
+                    <td>{{ eo.mgr }}</td>
+                    <td>{{ eo.sal }}</td>
+                    <td>{{ eo.deptno }}</td>
+                </tr>
+                {% endfor %}
+        </table>
+    </center>    
+</body>
+</html>
