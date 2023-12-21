@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AccessRecord</title>
+</head>
+<body bgcolor="black">
+    <center>
+        <table bgcolor="white" border="2px" cellpadding="10px" cellspacing="5px">
+                <tr>
+                    <th>serial no</th>
+                    <th>name</th>
+                    <th>date</th>
+                    <th>author</th>
+                </tr>
+                {% for ar in AccessRecord %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ ar.name }}</td>
+                    <td>{{ ar.date }}</td>
+                    <td>{{ ar.author }}</td>
+                </tr>
+                {% endfor %}
+        </table>
+    </center>    
+</body>
+</html>
