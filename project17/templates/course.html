@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>course</title>
+    <style>
+        div
+        {
+            
+            color:white;
+            margin-top: 200px;
+            width:500px;
+        }
+        input{
+            border-radius: 10px;
+            padding:5px;
+        }
+        fieldset{
+            border-radius: 15px;
+        }
+        
+    </style>
+</head>
+<body bgcolor="black">
+    <center>
+    <div>
+        <form action="" method="POST">
+            {% csrf_token %}
+
+            <fieldset>
+                <legend>Course Registration</legend>
+                <table>
+                    <tr>
+                        <td><label for="cid">course_id</label></td>
+                        <td><input type="text" name="cid" id="cid" placeholder="Enter Course Id"></td>
+                    </tr>
+                                        
+                    <tr>
+                        <td><label for="cn">course_name</label></td>
+                        <td><input type="text" name="cn" id="cn" placeholder="Enter Course Name"></td>
+                    </tr>
+                                        
+                    <tr>
+                        <td><label for="tn">teacher_name</label></td>
+                        <td><input type="text" name="tn" id="tn" placeholder="Enter Teacher Name"></td>
+                    </tr>
+           
+                    <tr>
+                        <td><input type="submit" value="course_register"></td>
+                    </tr>
+                </table>
+            </fieldset>
+        </form>
+    </div>
+    </center>
+</body>
+</html>
