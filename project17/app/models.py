@@ -20,7 +20,12 @@ class Student(models.Model):
         return self.sname
 
 
-
+class Login(models.Model):
+    user_name=models.CharField(max_length = 150, primary_key=True)
+    password=models.CharField(max_length=100)
+    
+    def __str__(self):
+        return self.user_name
 
 
 

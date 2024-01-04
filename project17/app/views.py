@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from app.models import *
 from django.http import HttpResponse
 from .models import *
@@ -30,3 +30,13 @@ def student(request):
         so = Student.objects.get_or_create(sid=si, sname=sn, sdob=sd, cid=co)[0]
         so.save()
     return render(request,'student.html',d)
+
+def login(request):
+    if request.method =='POST':
+        id=request.POST['id']
+        pw=request.POST['pw'] 
+        lo = Login.objects.get_or_create(user_name=id, password=pw)
+        return redirect('/student')
+        
+      
+    return render(request,'login.html')

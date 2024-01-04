@@ -10,3 +10,8 @@ class StudentAdmin(admin.ModelAdmin):
     list_display=['sid','sname','sdob','cid']
 
 admin.site.register(Student,StudentAdmin)
+
+class loginAdmin(admin.ModelAdmin):
+    list_display=['user_name','password']
+
+admin.site.register(Login,loginAdmin)
