@@ -20,16 +20,17 @@
     <center>
         <!-- <fieldset> -->
         <h1>School Registration Form</h1>
+        <hr color="black" width="40%">
 
         <form action="" method="POST">
             {% csrf_token %}
             
 
-                <div class="col-10">
-                    {{ sobj.as_p }}
+            <div class="col-10">
+                {{ sobj.as_p }}
 
-                    <input type="submit" value="submit details">
-                </div>
+                <input type="submit" value="submit details">
+            </div>
                 
             
         </form>

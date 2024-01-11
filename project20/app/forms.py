@@ -10,6 +10,7 @@ class Schoolform(forms.Form):
     cemail = forms.EmailField(label = 'confirm email id', widget=forms.EmailInput(attrs={'placeholder':'Enter confirm email'}))
     passw = forms.CharField(max_length = 100, label = 'password', widget=forms.PasswordInput(attrs={'placeholder':'Enter password'}))
     cpassw = forms.CharField(max_length = 100, label = ' confirm password', widget=forms.PasswordInput(attrs={'placeholder':'Enter confirm password'}))
+    botcatcher = forms.CharField(required=False, widget = forms.HiddenInput)
 
     def clean(self):
         print(self.cleaned_data)
@@ -18,5 +19,14 @@ class Schoolform(forms.Form):
         pa = self.cleaned_data['passw']
         cp = self. cleaned_data['cpassw']
 
+
         if se != ce or pa != cp:
             raise forms.ValidationError('invalid data')
+
+    def clean_botcatcher(self):
+        b = self.cleaned_data['botcatcher']
+        if len(b) > 0:
+            raise forms.ValidationError('invalid data')
+        
+        
+        
