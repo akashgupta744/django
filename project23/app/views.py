@@ -5,6 +5,12 @@ from .forms import *
 
 # Create your views here.
 
+# def home(request):
+#     if request.session.get('username'):
+    
+
+#     return render(request, 'hme.html')
+
 def registration(request):
     ufo = UserForm()
     pfo = ProfileForm()
@@ -25,3 +31,7 @@ def registration(request):
         else:
             return HttpResponse('Not valid')
     return render(request, 'registration.html',d)
+
+
+def index(request):
+    return render(request, 'index.html')
