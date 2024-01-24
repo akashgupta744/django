@@ -8,3 +8,7 @@ class Profile(models.Model):
     add = models.TextField()
     pic = models.ImageField(upload_to='pp')
 
+    def __str__(self):
+        return self.username.username
+    
+
