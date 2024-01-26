@@ -24,6 +24,7 @@
         border-radius: 20px;
         overflow: hidden;
       }
+     
     </style>
 
     {% block title %}
@@ -40,7 +41,6 @@
           {% if username.is_authenticated %}
               <a href="{% url 'user_logout' %}" class="nav-link">user_logout</a>
               <a href="{% url 'profile_display' %}" class="nav-link">profile_display</a>
-
 
           {% else %}
           <a href="{% url 'user_login' %}" class="nav-link">user_login</a>

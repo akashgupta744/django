@@ -28,12 +28,12 @@ def registration(request):
             MPFDO.username=MUFDO
             MPFDO.save()
             send_mail('registration',
-            ' Thank you your Registration is scuccessfull',
+            ' Thank you, your Registration is successfull',
             'akgupta7440@gmail.com',
             [MUFDO.email],
             fail_silently=False,
             )
-
+            return HttpResponseRedirect(reverse(user_login))
             
         else:
             return HttpResponse('Invalid Data')
@@ -68,10 +68,14 @@ def user_login(request):
 
     return render(request,'user_login.html')
 
+
+
 @login_required(login_url='user_login')
 def user_logout(request):
     logout(request)
     return HttpResponseRedirect(reverse('home'))
+
+
 
 @login_required(login_url='user_login')
 def profile_display(request):
@@ -80,3 +84,15 @@ def profile_display(request):
     po = Profile.objects.get(username = uo)
     d = {'uo':uo,'po':po}
     return render(request, 'profile_display.html',d)
+
+
+@login_required(login_url='user_login')
+def change_password(request):
+    if request.method == 'POST':
+        pw = request.POST['pw']
+        username = request.session.get('username')
+        uo = User.objects.get(username = username)
+        uo.set_password(pw)
+        uo.save()
+        return HttpResponse('your password is reset success')
+    return render(request, 'change_password.html')
