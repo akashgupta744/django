@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 
 # Create your views here.
 
@@ -96,3 +96,17 @@ def change_password(request):
         uo.save()
         return HttpResponse('your password is reset success')
     return render(request, 'change_password.html')
+
+
+def forgot_password(request):
+    if request.method == 'POST':
+        username = request.POST['un']
+        npw = request.POST['pw']
+        luo = User.objects.filter(username = username)
+        if luo:
+            uo = luo[0]
+            uo.set_password(npw)
+            uo.save()
+            return redirect('user_login')
+        
+    return render(request, 'forgot_password.html')
