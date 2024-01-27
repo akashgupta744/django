@@ -14,8 +14,15 @@ from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+import pymysql
+pymysql.version_info = (1, 4, 6, 'final', 0)
+pymysql.install_as_MySQLdb()
+
+
 import os
 TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
+
 
 
 # Quick-start development settings - unsuitable for production
@@ -77,9 +84,14 @@ WSGI_APPLICATION = 'project23.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'akash',
+        'USER': 'root',
+        'PASSWORD' : 'Ak427@gmail',
+        'HOST' : 'localhost',
+        'PORT' : '3306',
+
     }
 }
 
