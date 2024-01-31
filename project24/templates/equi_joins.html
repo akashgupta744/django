@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>equi joins</title>
+    <style>
+        th,td{
+            padding: 4px;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <h1>Equivalent join</h1>
+        <table border="3px" >
+            <tr>
+                <th>empno</th>
+                <th>ename</th>
+                <th>job</th>
+                <th>mgr</th>
+                <th>hiredate</th>
+                <th>sal</th>
+                <th>comm</th>
+                <th>deptno</th>
+                <th>dname</th>
+                <th>dloc</th>
+            </tr>
+
+            {% for to in QLTO %}
+                <tr>
+                    <td>{{to.empno}}</td>
+                    
+                    <td>{{to.ename}}</td>
+                    <td>{{to.job}}</td>
+                    <td>{{to.mgr}}</td>
+                    <td>{{to.hiredate}}</td>
+                    <td>{{to.sal}}</td>
+                    <td>{{to.comm}}</td>
+                    <td>{{to.deptno.deptno}}</td>
+                    <td>{{to.deptno.dname}}</td>
+                    <td>{{to.deptno.loc}}</td>
+
+                </tr>
+            {% endfor %}
+
+
+
+
+
+
+
+
+
+
+
+
+        </table>
+    </center>
+</body>
+</html>

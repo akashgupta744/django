@@ -8,17 +8,15 @@ class Dept(models.Model):
     dname = models.CharField(max_length = 100)
     loc = models.CharField(max_length = 100)
 
-    def __str__(self):
-        return self.dname
 
 class Emp(models.Model):
     empno = models.IntegerField(primary_key = True)
     ename = models.CharField(max_length = 100)
     job  = models.CharField(max_length = 100)
-    mgr = models.IntegerField(self, on_delete = models.SET_NULL, null = True, blank = True)
+    mgr = models.ForeignKey('self', on_delete = models.SET_NULL, null = True, blank = True)
     hiredate = models.DateField()
-    sal = models.DecimalField(max_digit = 10, decimal_place = 2)
-    comm = models.DecimalField(max_digit = 10, decimal_place = 2)
+    sal = models.DecimalField(max_digits = 10, decimal_places = 2)
+    comm = models.DecimalField(max_digits = 10, decimal_places = 2, null = True, blank = True)
     deptno = models.ForeignKey(Dept, on_delete=models.CASCADE)
 
     def __str__(self):
@@ -26,9 +24,7 @@ class Emp(models.Model):
 
 class Salgrade(models.Model):
     grade = models.IntegerField(primary_key = True)
-    lsal = models.DecimalField(max_digit = 10, decimal_place = 2)
-    hsal = models.DecimalField(max_digit = 10, decimal_place = 2)
+    lsal = models.DecimalField(max_digits = 10, decimal_places = 2)
+    hsal = models.DecimalField(max_digits = 10, decimal_places = 2)
 
-    def __str__(self):
-        return self.grade
-
+   
