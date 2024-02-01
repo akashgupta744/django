@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import *
+from django.db.models import Q
 # Create your views here.
 
 def equi_joins(request):
@@ -21,3 +22,26 @@ def equi_joins(request):
     QLTO = Emp.objects.prefetch_related('deptno').filter(comm__isnull = False)
     d = {'QLTO':QLTO}
     return render(request, 'equi_joins.html', d)
+
+
+def self_joins(request):
+    SJQLO = Emp.objects.select_related('mgr').all()
+    SJQLO = Emp.objects.select_related('mgr').filter(hiredate='2024-01-10')
+    SJQLO = Emp.objects.select_related('mgr').filter(hiredate__in=('2024-01-10','2024-01-11','2024-01-12'))
+    SJQLO = Emp.objects.select_related('mgr').filter(sal__gt=2500)
+    SJQLO = Emp.objects.select_related('mgr').filter(sal__gte=2500)
+    SJQLO = Emp.objects.select_related('mgr').filter(sal__lt=2500)
+    SJQLO = Emp.objects.select_related('mgr').filter(sal__lte=2500)
+    SJQLO = Emp.objects.select_related('mgr').filter(hiredate__month='01')
+    SJQLO = Emp.objects.select_related('mgr').filter(mgr__empno = 7698)
+    SJQLO = Emp.objects.select_related('mgr').filter(mgr = 7698)
+    SJQLO = Emp.objects.select_related('mgr').filter(mgr__empno = 7698, comm__isnull = True)
+    SJQLO = Emp.objects.select_related('mgr').filter(mgr__empno = 7698, comm__isnull = False)
+    SJQLO = Emp.objects.select_related('mgr').filter(ename__startswith = 'A')
+    SJQLO = Emp.objects.select_related('mgr').filter(ename__endswith = 'G')
+    SJQLO = Emp.objects.select_related('mgr').filter(ename__contains = 'A')
+    SJQLO = Emp.objects.select_related('mgr').filter(Q(comm__isnull = True) | Q(ename__startswith = 'A'))
+    SJQLO = Emp.objects.select_related('mgr').filter(Q(ename__startswith = 'S') | Q(comm__isnull = True) )
+    
+    d={'SJQLO':SJQLO}
+    return render(request, 'self_joins.html',d)

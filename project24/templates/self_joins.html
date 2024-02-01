@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>equi joins</title>
+    <style>
+        th,td{
+            padding: 4px;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <h1>Self join</h1>
+        <table border="3px" >
+            <tr>
+                <th>empno</th>
+                <th>ename</th>
+                <th>mgr</th>
+                <th>hiredate</th>
+                <th>sal</th>
+
+            </tr>
+
+            {% for to in SJQLO %}
+                <tr>
+                    <td>{{to.empno}}</td>
+                    <td>{{to.ename}}</td>
+                    <td>{{to.mgr.empno}}</td>
+                    <td>{{to.hiredate}}</td>
+                    <td>{{to.sal}}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </center>
+</body>
+</html>
