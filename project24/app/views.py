@@ -45,3 +45,37 @@ def self_joins(request):
     
     d={'SJQLO':SJQLO}
     return render(request, 'self_joins.html',d)
+
+def multiple_joins(request):
+    EMD = Emp.objects.select_related('deptno', 'mgr').all()
+    EMD = Emp.objects.select_related('deptno', 'mgr').filter(hiredate__in=('2024-01-10','2024-01-11','2024-01-12'))
+    EMD = Emp.objects.select_related('deptno', 'mgr').filter(sal__gt=2500)
+    EMD = Emp.objects.select_related('deptno', 'mgr').filter(sal__gte=2500)
+    EMD = Emp.objects.select_related('deptno', 'mgr').filter(sal__lt=2500)
+    EMD = Emp.objects.select_related('deptno', 'mgr').filter(sal__lte=2500)
+    EMD = Emp.objects.select_related('deptno', 'mgr').filter(deptno=10, comm = None, ename = 'CLARK')
+    EMD = Emp.objects.select_related('deptno', 'mgr').filter(deptno__dname='ACCOUNTING', ename = 'CLARK')
+    EMD = Emp.objects.select_related('deptno', 'mgr').filter(deptno__dname='ACCOUNTING', ename = 'CLARK', deptno__loc = 'NEW YORK')
+    EMD = Emp.objects.select_related('deptno', 'mgr').filter(deptno__dname='ACCOUNTING', comm__isnull = True)
+    EMD = Emp.objects.select_related('deptno', 'mgr').filter(comm__isnull = True)
+    EMD = Emp.objects.select_related('deptno', 'mgr').filter(comm__isnull = False)
+    EMD = Emp.objects.prefetch_related('deptno', 'mgr').all()
+    EMD = Emp.objects.prefetch_related('deptno', 'mgr').filter(deptno=10)
+    EMD = Emp.objects.prefetch_related('deptno', 'mgr').filter(deptno__dname='ACCOUNTING', ename = 'CLARK', deptno__loc = 'NEW YORK')
+    EMD = Emp.objects.prefetch_related('deptno', 'mgr').filter(deptno__dname='ACCOUNTING', comm__isnull = True)
+    EMD = Emp.objects.prefetch_related('deptno', 'mgr').filter(comm__isnull = True)
+    EMD = Emp.objects.prefetch_related('deptno', 'mgr').filter(comm__isnull = False)
+    EMD = Emp.objects.select_related('deptno', 'mgr').filter(hiredate__month='01')
+    EMD = Emp.objects.select_related('deptno', 'mgr').filter(mgr__empno = 7698) 
+    EMD = Emp.objects.select_related('deptno', 'mgr').filter(mgr = 7698)
+    EMD = Emp.objects.select_related('deptno', 'mgr').filter(mgr__empno = 7698, comm__isnull = True)
+    EMD = Emp.objects.select_related('deptno', 'mgr').filter(mgr__empno = 7698, comm__isnull = False)
+    EMD = Emp.objects.select_related('deptno', 'mgr').filter(ename__startswith = 'A')
+    EMD = Emp.objects.select_related('deptno', 'mgr').filter(ename__endswith = 'G')
+    EMD = Emp.objects.select_related('deptno', 'mgr').filter(ename__contains = 'A')
+    EMD = Emp.objects.select_related('deptno', 'mgr').filter(Q(comm__isnull = True) | Q(ename__startswith = 'A'))
+    EMD = Emp.objects.select_related('deptno', 'mgr').filter(Q(ename__startswith = 'S') | Q(comm__isnull = True) )
+    
+
+    d = {'EMD':EMD}
+    return render(request, 'multiple_joins.html',d)
